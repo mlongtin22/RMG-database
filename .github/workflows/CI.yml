@@ -45,6 +45,10 @@ jobs:
     env: 
       # This is true only if this is a reference case for the regression testing:
       REFERENCE_JOB: ${{ github.ref == 'refs/heads/main' && github.repository == 'ReactionMechanismGenerator/RMG-database' }}
+    strategy:
+      max-parallel: 5
+    env: # update this if needed to match a pull request on the RMG-database
+      RMG_PY_BRANCH: electrocat
     defaults:
       run:
         shell: bash -l {0}
